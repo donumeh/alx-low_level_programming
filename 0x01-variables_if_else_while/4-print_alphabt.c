@@ -9,7 +9,7 @@ int main(void)
 {
 	char alpha_small = 'a';
 
-	while (alpha_small <= 'z');
+	while (alpha_small <= 'z')
 	{
 		if (alpha_small == 'q' || alpha_small == 'e')
 			continue;
