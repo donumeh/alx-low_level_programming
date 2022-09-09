@@ -2,7 +2,7 @@
 
 /**
  * main - prints the lowercase alpha backwards
- * 
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
