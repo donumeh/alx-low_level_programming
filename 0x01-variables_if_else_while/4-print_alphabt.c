@@ -7,14 +7,13 @@
  */
 int main(void)
 {
-	char alpha_small = 'a';
+	char alpha_small;
 
-	while (alpha_small <= 'z')
+	for (alpha_small = 'a'; alpha_small <= 'z'; alpha_small++)
 	{
 		if (alpha_small == 'q' || alpha_small == 'e')
 			continue;
-		else
-			putchar(alpha_small++);
+		putchar(alpha_small);
 	}
 	putchar('\n');
 
