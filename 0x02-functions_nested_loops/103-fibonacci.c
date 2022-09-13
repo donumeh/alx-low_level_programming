@@ -8,6 +8,7 @@
 int main(void)
 {
 	unsigned long int i, a, b, temp, sum = 0;
+
 	a = b = 1;
 
 	for (i = 0; i < 34; i++)
