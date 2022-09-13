@@ -2,7 +2,7 @@
 
 
 /**
- * print_nature - prints natural numbers
+ * main - prints natural numbers
  *
  * Return: Always 0 (Success)
  */
