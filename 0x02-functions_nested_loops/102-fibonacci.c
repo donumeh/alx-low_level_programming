@@ -7,19 +7,21 @@
  */
 int main(void)
 {
-	unsigned long long int a, b, temp, i;
+	unsigned long int a, b, temp, i;
 
 	a = b = 1;
 
 	for (i = 1; i < 50; i++)
 	{
 		if (i == 49)
-			printf("%llu", a);
+			printf("%lu", a);
 		else
-			printf("%llu, ", a);
+			printf("%lu, ", a);
 		temp = a;
 		a += b;
 		b = temp;
 	}
 	printf("\n");
+
+	return (0);
 }
