@@ -30,15 +30,12 @@ long int largest_prime_factor(long int n)
 	{
 		if (n % div == 0)
 		{
-			prime_factor = 1;
 			n = n / div;
 		}
 		else
 			div++;
 	}
-
-	if (prime_factor < n)
-		prime_factor = n;
+	prime_factor = n;
 
 	return (prime_factor);
 }
