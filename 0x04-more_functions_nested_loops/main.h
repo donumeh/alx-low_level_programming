@@ -15,4 +15,5 @@ void print_square(int size);
 void print_number(int n);
 void print_triangle(int size);
 
+
 #endif /* MAIN_H */
