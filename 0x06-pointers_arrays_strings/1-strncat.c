@@ -5,6 +5,7 @@
  * @dest: destination of the strings
  * @src: source of the string
  * @n: the bytes to concat
+ * Return: char
  */
 char *_strncat(char *dest, char *src, int n)
 {
