@@ -1,30 +1,34 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
- * cap_string - capitalizes any char after a delimiter
- * @c: (char *) char args
- * Return: char value
+ * cap_string - capitalizes everey word of a string
+ * @s: string to modify
+ *
+ * Return: the resulting string
  */
-char *cap_string(char *c)
+char *cap_string(char *s)
 {
-	char delim[14] = {' ', '\t', '\n', ',', ';', '.', '!', '?',
-		'"', '(', ')', '{', '}', '\0'};
-	int i = 0, j;
+	int i, j;
 
-	while (c[i])
+	char spe[13] = {' ', '\t', '\n', ',', ';', '.',
+		'!', '?', '"', '(', ')', '{', '}'};
+
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		for (j = 0; j < 14; j++)
+		if (i == 0 && s[i] >= 'a' && s[i] <= 'z')
+			s[i] -= 32;
+
+		for (j = 0; j < 13; j++)
 		{
-			if (c[i] == delim[j])
+			if (s[i] == spe[j])
 			{
-				if (c[i + 1] >= 97 && c[i + 1] <= 122)
+				if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
 				{
-					c[i + 1] -= 32;
-					break;
+					s[i + 1] -= 32;
 				}
 			}
 		}
-		i++;
 	}
-	return (c);
+
+	return (s);
 }
