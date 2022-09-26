@@ -5,6 +5,7 @@
  * for the first occurance of a char
  * @s: the string
  * @c: the byte value to search for
+ * Return: char
  */
 char *_strchr(char *s, char c)
 {
@@ -18,5 +19,5 @@ char *_strchr(char *s, char c)
 		}
 		i++;
 	}
-	return (NULL);
+	return ('\0');
 }
