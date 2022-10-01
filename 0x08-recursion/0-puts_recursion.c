@@ -1,17 +1,12 @@
-#include "main.h"
+#include "holberton.h"
+#include <stdio.h>
 
 /**
- * _puts_recursion - prints a string
- * @s: the character
- * Return: void
- */
+ * _puts_recursion - prints a string folloowe by a new a line
+ * @s: string
+*/
+
 void _puts_recursion(char *s)
 {
-	if (*s == '\0')
-	{
-		_putchar('\n');
-		return;
-	}
-	_putchar(*s);
-	_puts_recursion(s + 1);
+	puts(s);
 }
