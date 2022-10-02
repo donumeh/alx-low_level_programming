@@ -10,21 +10,23 @@ int _atoi(char *c);
  */
 int main(int argc, char *argv[])
 {
-	int i = 1, sum = 0;
+	int num, digit, sum = 0;
 
-	if (argc == 1)
+	for (num = 1; num < argc; num++)
 	{
-		printf("%d\n", 0);
-		exit (EXIT_FAILURE);
-	}
+		for (digit = 0; argv[num][digit]; digit++)
+		{
+			if (argv[num][digit] < '0' || argv[num][digit] > '9')
+			{
+				printf("Error\n");
+				return (1);
 
-	for (i = 1; i < argc; i++)
-	{
-		sum += _atoi(argv[i]);
+			}
+		}
+		sum += _atoi(argv[num]);
 	}
 
 	printf("%d\n", sum);
-
 	return (0);
 }
 
