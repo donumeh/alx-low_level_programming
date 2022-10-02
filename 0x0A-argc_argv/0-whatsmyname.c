@@ -2,7 +2,7 @@
 
 /**
  * main - prints its name
- * @arc: number of arguments passed
+ * @argc: number of arguments passed
  * @argv: string of arguments passed
  * Return: Always 0.
  */
