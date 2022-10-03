@@ -11,20 +11,15 @@ char *str_concat(char *s1, char *s2)
 	int i, size1 = 0, size2 = 0, j;
 	char *array;
 
+	if (s1 == NULL)
+		s1 = "";
+	else if (s2 == NULL)
+		s2 = "";
 
 	while (s1[size1] != '\0')
 		size1++;
 	while (s2[size2] != '\0')
 		size2++;
-
-	if (s1 == NULL)
-	{
-		size1 = 0;
-	}
-	else if (s2 == NULL)
-	{
-		size2 = 0;
-	}
 
 	array = malloc((sizeof(char) * (size1 + size2)) + 1);
 	if (array == NULL)
