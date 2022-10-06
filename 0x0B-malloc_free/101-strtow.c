@@ -1,70 +1,76 @@
 #include "main.h"
 
 /**
- * strtow - splits a string into words
- * @str: the string to be splited
- * Return: char
+ * count_word - helper function to count the number of words in a string
+ * @s: string to evaluate
+ *
+ * Return: number of words
+ */
+int count_word(char *s)
+{
+	int flag, c, w;
+
+	flag = 0;
+	w = 0;
+
+	for (c = 0; s[c] != '\0'; c++)
+	{
+		if (s[c] == ' ')
+			flag = 0;
+		else if (flag == 0)
+		{
+			flag = 1;
+			w++;
+		}
+	}
+
+	return (w);
+}
+/**
+ * **strtow - splits a string into words
+ * @str: string to split
+ *
+ * Return: pointer to an array of strings (Success)
+ * or NULL (Error)
  */
 char **strtow(char *str)
 {
-	int i = 0, j, count = 0, u, subcount = 0;
-	char **array;
-	int c, d;
+	char **matrix, *tmp;
+	int i, k = 0, len = 0, words, c = 0, start, end;
 
-	if (str == NULL || *str == '\0')
+	while (*(str + len))
+		len++;
+	words = count_word(str);
+	if (words == 0)
 		return (NULL);
 
-	while (str[i])
-	{
-		if (str[i] != 32)
-		{
-			while(str[i])
-			{
-				if (str[i] == ' ')
-				{
-					count++;
-					break;
-				}
-				i++;
-			}
-		}
-		i++;
-	}
-
-	array = (char **)malloc((sizeof(char *) * count) + 1);
-	if (array == NULL)
+	matrix = (char **) malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
 		return (NULL);
 
-	for (j = 0, u = 0; j < count; j++)
+	for (i = 0; i <= len; i++)
 	{
-		subcount = 0;
-		while (str[u])
+		if (str[i] == ' ' || str[i] == '\0')
 		{
-			if (str[u] != 32)
+			if (c)
 			{
-				c = u;
-				subcount++;
-				while (str[++u] != ' ')
-				{
-					subcount++;
-				}
-				if (str[u] == ' ')
-				{
-					d = u;
-					break;
-				}
+				end = i;
+				tmp = (char *) malloc(sizeof(char) * (c + 1));
+				if (tmp == NULL)
+					return (NULL);
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[k] = tmp - c;
+				k++;
+				c = 0;
 			}
-			u++;
 		}
-
-		array[j] = malloc((sizeof(char) * subcount) + 1);
-		if (array[j] == NULL)
-			return (NULL);
-
-		for (i = 0; i < subcount && c <= d; i++)
-		{
-			array[j][i] = str[c++];
-		}
+		else if (c++ == 0)
+			start = i;
 	}
-	return (array);
+
+	matrix[k] = NULL;
+
+	return (matrix);
 }
