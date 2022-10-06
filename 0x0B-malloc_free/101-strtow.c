@@ -14,7 +14,7 @@ char **strtow(char *str)
 	if (str == NULL || *str == '\0')
 		return (NULL);
 
-	while (str[i++])
+	while (str[i])
 	{
 		if (str[i] != 32)
 		{
@@ -27,6 +27,7 @@ char **strtow(char *str)
 				}
 			}
 		}
+		i++;
 	}
 
 	array = (char **)malloc((sizeof(char *) * count) + 1);
