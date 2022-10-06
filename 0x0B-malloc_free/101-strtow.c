@@ -36,7 +36,7 @@ char **strtow(char *str)
 	for (j = 0, u = 0; j < count; j++)
 	{
 		subcount = 0;
-		while (str[u++])
+		while (str[u])
 		{
 			if (str[u] != 32)
 			{
@@ -52,6 +52,7 @@ char **strtow(char *str)
 					break;
 				}
 			}
+			u++;
 		}
 
 		array[j] = malloc((sizeof(char) * subcount) + 1);
