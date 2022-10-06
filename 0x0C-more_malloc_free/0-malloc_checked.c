@@ -7,10 +7,10 @@
  */
 void *malloc_checked(unsigned int b)
 {
-	int *array;
+	void *array;
 	
-	array = malloc(sizeof(*array) * b);
+	array = malloc(sizeof(b));
 	if (array == NULL)
 		exit(98);
-	return ((void *)array);
+	return (array);
 }
