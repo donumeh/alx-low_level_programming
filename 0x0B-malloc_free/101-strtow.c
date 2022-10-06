@@ -18,13 +18,14 @@ char **strtow(char *str)
 	{
 		if (str[i] != 32)
 		{
-			while(str[i++])
+			while(str[i])
 			{
 				if (str[i] == ' ')
 				{
 					count++;
 					break;
 				}
+				i++;
 			}
 		}
 		i++;
