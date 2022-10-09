@@ -9,21 +9,12 @@
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i, j = 0, len1, len2;
+	unsigned int i, j = 0, len1;
 	char *array;
 
-	if (s1 == NULL)
-		*s1 = '\0';
-	if (s2 == NULL)
-		*s2 = '\0';
-
 	len1 = strlen(s1);
-	len2 = strlen(s2);
 
-	if (n >= len2)
-		n = len2;
-
-	array = malloc(sizeof(*array) * (len1 + n));
+	array = malloc(sizeof(s1) * n);
 	if (array == NULL)
 		return (NULL);
 
