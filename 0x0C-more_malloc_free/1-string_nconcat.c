@@ -9,10 +9,14 @@
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i, j = 0, len1;
+	unsigned int i, j = 0, len1, len2;
 	char *array;
 
 	len1 = strlen(s1);
+	len2 = strlen(s2);
+
+	if (n >= len2)
+		n = len2;
 
 	array = malloc(sizeof(s1) * n);
 	if (array == NULL)
