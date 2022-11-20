@@ -43,7 +43,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 			s3[i] = s1[i];
 		}
 	}
-	
+
 	free(s1);
 	return (s3);
 }
