@@ -16,7 +16,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 
 	if (!n)
 	{
-		printf(" ");
+		printf("\n");
 		return;
 	}
 	for (i = 0; i <= n - 1; i++)
