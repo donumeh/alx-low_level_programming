@@ -50,9 +50,11 @@ void print_all(const char * const format, ...)
 				/* Ignore other characters */
 				break;
 		}
-		if ((format[j] != format[i - 1]) && n == 0)
+		switch ((format[j] != format[i - 1]) && n == 0)
 		{
-			printf(", ");
+			case 1:
+				printf(", ");
+				break;
 		}
 		n = 0;
 		j++;
