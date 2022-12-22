@@ -13,6 +13,13 @@ void print_all(const char * const format, ...)
 	char *s;
 	int i = 0, j = 0, n = 0;
 
+	if (format == NULL)
+	{
+		printf("\n");
+		return;
+	}
+
+
 	va_start(args, format);
 	i = str_count(format);
 	while (format[j] && i)
