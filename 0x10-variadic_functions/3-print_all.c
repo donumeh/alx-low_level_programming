@@ -1,70 +1,67 @@
 #include "variadic_functions.h"
 
+int str_count(const char *s);
 /**
  * print_all - prints a variadic num of args
  * @format: has format specifier to print
  *
  * Return: void
  */
-void print_all(const char* format, ...)
+void print_all(const char * const format, ...)
 {
 	va_list args;
 	char *s;
 	int i = 0, j = 0;
 
 	va_start(args, format);
-
-	while (format[i])
-		i++;
-	
+	i = str_count(format);
 	while (format[j])
 	{
-		char type = format[j];
-		switch (type)
+		switch (format[j])
 		{
 			case 'c':
-				{
-					char c = (char)va_arg(args, int);
-					printf("%c", c);
-					break;
-				}
+				printf("%c", (char)va_arg(args, int));
+				break;
 			case 'i':
-				{
-					int i = va_arg(args, int);
-					printf("%d", i);
-					break;
-				}
+				printf("%d", va_arg(args, int));
+				break;
 			case 'f':
-				{
-					double f = va_arg(args, double);
-					printf("%f", f);
-					break;
-				}
+				printf("%f", va_arg(args, double));
+				break;
 			case 's':
+				s = va_arg(args, char*);
+				if (s == NULL)
 				{
-					s = va_arg(args, char*);
-					if (s == NULL)
-					{
-						printf("(nil)");
-					}
-					if (s != NULL)
-					{
-						printf("%s", s);
-					}
-					break;
+					printf("(nil)");
 				}
+				if (s != NULL)
+				{
+					printf("%s", s);
+				}
+				break;
 			default:
-				{
-					/* Ignore other characters */
-					break;
-				}
+				/* Ignore other characters */
+				break;
 		}
 		if (format[j] != format[i - 1])
 			printf(", ");
-
 		j++;
 	}
 	va_end(args);
 	printf("\n");
 }
 
+/**
+ * str_count - counts a string
+ * @s: the string
+ *
+ * Return: number of chars
+ */
+int str_count(const char *s)
+{
+	int i = 0;
+
+	while (s[i])
+		i++;
+	return (i);
+}
