@@ -38,15 +38,15 @@ void print_all(const char * const format, ...)
 				printf("(nil)");
 				break;
 			default:
+				n++;
 				/* Ignore other characters */
-				n = 1;
 				break;
 		}
-		if ((format[j] != format[i - 1]) && n == 1)
+		if ((format[j] != format[i - 1]) && n == 0)
 		{
 			printf(", ");
-			n = 0;
 		}
+		n = 0;
 		j++;
 	}
 	va_end(args);
