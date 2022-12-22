@@ -1,55 +1,70 @@
 #include "variadic_functions.h"
 
 /**
- * print_all - prints a the variable number of arguments
- * from a variadic function
- * @format: a string holding some format specifiers
+ * print_all - prints a variadic num of args
+ * @format: has format specifier to print
  *
  * Return: void
  */
-void print_all(const char * const format, ...)
+void print_all(const char* format, ...)
 {
-	va_list ap;
-	int i = 0, j = 0;
+	va_list args;
 	char *s;
+	int i = 0, j = 0;
 
-	/* string character count */
+	va_start(args, format);
+
 	while (format[i])
 		i++;
-
-	/* start variadic function */
-	va_start(ap, format);
-
-	/* loops through the string (format) for specifiers */
+	
 	while (format[j])
 	{
-		/* switch statement to check for specidiers */
-		switch(format[j])
+		char type = format[j];
+		switch (type)
 		{
 			case 'c':
-				printf("%c", (char)va_arg(ap, int));
-				break;
+				{
+					char c = (char)va_arg(args, int);
+					printf("%c", c);
+					break;
+				}
 			case 'i':
-				printf("%d", va_arg(ap, int));
-				break;
+				{
+					int i = va_arg(args, int);
+					printf("%d", i);
+					break;
+				}
 			case 'f':
-				printf("%f", va_arg(ap, double));
-				break;
+				{
+					double f = va_arg(args, double);
+					printf("%f", f);
+					break;
+				}
 			case 's':
-				s = va_arg(ap, char*);
-
-				/* check if string is null */
-				if (s == NULL)
-					printf("(nil");
-				if (s != NULL)
-					printf("%s", s);
-				break;
+				{
+					s = va_arg(args, char*);
+					if (s == NULL)
+					{
+						printf("(nil)");
+					}
+					if (s != NULL)
+					{
+						printf("%s", s);
+					}
+					break;
+				}
+			default:
+				{
+					/* Ignore other characters */
+					break;
+				}
 		}
-
-		/* prints delimiter */
 		if (format[j] != format[i - 1])
 			printf(", ");
+
 		j++;
 	}
+	va_end(args);
 	printf("\n");
 }
+
