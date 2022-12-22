@@ -11,7 +11,7 @@ void print_all(const char * const format, ...)
 {
 	va_list args;
 	char *s;
-	int i = 0, j = 0;
+	int i = 0, j = 0, n = 0;
 
 	va_start(args, format);
 	i = str_count(format);
@@ -39,10 +39,14 @@ void print_all(const char * const format, ...)
 				break;
 			default:
 				/* Ignore other characters */
+				n = 1;
 				break;
 		}
-		if (format[j] != format[i - 1])
+		if ((format[j] != format[i - 1]) && n == 1)
+		{
 			printf(", ");
+			n = 0;
+		}
 		j++;
 	}
 	va_end(args);
