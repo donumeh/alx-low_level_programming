@@ -41,7 +41,7 @@ void print_all(const char * const format, ...)
 				/* check if string is null */
 				if (s == NULL)
 					printf("(nil");
-				else
+				if (s != NULL)
 					printf("%s", s);
 				break;
 		}
