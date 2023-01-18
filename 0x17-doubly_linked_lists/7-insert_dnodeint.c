@@ -26,14 +26,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		dprintf(2, "Error, Malloc failed to allocate\n");
 		return (NULL);
 	}
-
 	temp->n = n;
-
-	if (*h == NULL)
-	{
-		temp->next = *h;
-		*h = temp;
-	}
+	if (idx == 0)
+		return (add_dnodeint(h, idx));
+	
 	while (head != NULL)
 	{
 		if (idx == count)
@@ -47,11 +43,8 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		count++;
 		head = head->next;
 	}
-	if ((head == NULL) && (idx == count))
-	{
-		temp->prev = prev;
-		temp->next = NULL;
-		prev->next = temp;
-	}
+	if (head == NULL && idx == count)
+		return (add_dnodeint_end(h, idx));
+
 	return (current);
 }
