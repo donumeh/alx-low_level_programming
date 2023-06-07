@@ -12,6 +12,7 @@ void print_rev(char *s, int num);
 void _print_rev_recursion(char *s)
 {
 	int num = strlen(s) - 1;
+
 	print_rev(s, num);
 }
 
@@ -27,9 +28,6 @@ void print_rev(char *s, int num)
 {
 	if (num < 0)
 		return;
-	else
-	{
-		_putchar(s[num]);
-		print_rev(s, num - 1);
-	}
+	_putchar(s[num]);
+	print_rev(s, num - 1);
 }
