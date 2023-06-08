@@ -38,15 +38,9 @@ int str_identify(char *s1, char *s2, int len1, int len2)
 	if (s1[len1] != s2[len2])
 	{
 		if (s2[len2] == '*')
-			len1 -= 1;
-		else if (s2[len2 - 1] == '*')
-		{
-			if (s2[len2] == '\0')
-				return (1);
-			len2 -= 1;
-		}
-		else
-			return (0);
+			return (str_identify(s1, s2, len1 + 1, len2) ||
+					str_identify(s1, s2, len1, len2 + 1));
+		return (0);
 	}
 
 	return (str_identify(s1, s2, len1 + 1, len2 + 1));
