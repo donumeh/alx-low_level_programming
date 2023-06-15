@@ -11,7 +11,7 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int len1, len2, i, byte_copy;
+	unsigned int len1, len2, i, j, bytes;
 	char *str = NULL;
 
 	/* checks if the strings are null */
@@ -28,23 +28,26 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	while (s2[len2])
 		len2++;
 
+	/* If bytes more than second string then use entire string */
 	if (n >= len2)
 		n = len2;
-	/* malloc allocation */
-	str = malloc(sizeof(char) * (len1 + n + 1));
-	if (str == NULL)
+
+	bytes = n + len1 + 1;
+	str = malloc(sizeof(char) * bytes);
+	if (str == NULL) /* checks if malloc initializes or fails */
 		return (NULL);
 
-	byte_copy = n;
-	for (i = 0; i < (len1 + n); i++)
+	for (i = 0; i < len1; i++)
 	{
-		while (*s1)
-			str[i++] = *s1++;
-		while (*s2 && byte_copy--)
-			str[i++] = *s2++;
-		if (i == ((len1 + n) - 1))
-			str[i] = '\0';
+		str[i] = s1[i];
 	}
+
+	for (j = 0; i < bytes && j < n; i++, j++)
+	{
+		str[i] = s2[j];
+	}
+
+	str[i] = '\0';
 
 	return (str);
 }
