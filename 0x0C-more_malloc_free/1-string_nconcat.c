@@ -11,26 +11,31 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int len1, len2, i, byte_copy = n;
+	unsigned int len1, len2, i, byte_copy;
 	char *str = NULL;
 
+	/* checks if the strings are null */
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
 		s2 = "";
+
+	/* finds the length of the string */
 	len1 = 0;
 	while (s1[len1])
 		len1++;
 	len2 = 0;
 	while (s2[len2])
 		len2++;
+
 	if (n >= len2)
 		n = len2;
-
+	/* malloc allocation */
 	str = malloc(sizeof(char) * (len1 + n + 1));
 	if (str == NULL)
 		return (NULL);
 
+	byte_copy = n;
 	for (i = 0; i < (len1 + n); i++)
 	{
 		while (*s1)
