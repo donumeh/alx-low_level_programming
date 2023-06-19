@@ -51,6 +51,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	my_dog->owner = strdup(owner);
 	my_dog->age = age;
 
+	free(name);
+	free(owner);
 	return (my_dog);
 }
 
