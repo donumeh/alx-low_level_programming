@@ -1,6 +1,10 @@
 #ifndef DOG_H
 #define DOG_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 /**
  * struct dog - a structure on dog
  * @name: the name of the dog
@@ -16,6 +20,14 @@ struct dog
 	float age;
 	char *owner;
 };
+
+/**
+ * dog_t - New type def for dog
+ */
+typedef struct dog dog_t;
+
+void init_dog(struct dog *d, char *name, float age, char *owner);
+void print_dog(struct dog *d);
 
 
 #endif /* DOG_H */
