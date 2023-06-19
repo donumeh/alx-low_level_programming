@@ -14,14 +14,14 @@ dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *my_dog = NULL;
 
-	if (name == NULL)
+	if (!name)
 	{
 		name = malloc(sizeof("(nil)"));
 		if (name == NULL)
 			return (NULL);
 		_strcpy(name, "(nil)");
 	}
-	if (owner == NULL)
+	if (!owner)
 	{
 		owner = malloc(sizeof("(nil)"));
 		if (owner == NULL)
@@ -29,7 +29,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		_strcpy(owner, "(nil)");
 	}
 
-	my_dog = malloc(sizeof(struct dog));
+	my_dog = malloc(sizeof(dog_t));
 	if (my_dog == NULL)
 		return (NULL);
 
