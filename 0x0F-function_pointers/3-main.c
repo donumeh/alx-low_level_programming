@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(99);
 	}
-	
+
 	if (((strcmp(argv[2], "/") == 0) || (strcmp(argv[2], "%") == 0))
 				&& h == 0)
 	{
