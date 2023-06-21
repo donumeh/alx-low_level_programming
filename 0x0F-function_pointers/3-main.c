@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	}
 
 	if (((strcmp(argv[2], "/") == 0) || (strcmp(argv[2], "%") == 0))
-				&& h == 0)
+				&& u == 0)
 	{
 		printf("Error\n");
 		exit(100);
