@@ -20,9 +20,9 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	for (i = 0; i < n; i++)
 	{
 		len = strlen(va_arg(ap, char *));
-		string = malloc(sizeof(char) * (len + 1));
+		string = malloc(sizeof(char) * len);
 		if (string == NULL)
-			return;
+			exit(EXIT_FAILURE);
 
 		strcpy(string, va_arg(copy, char *));
 		if (string == NULL)
