@@ -9,12 +9,13 @@
 
 void print_all(const char * const format, ...)
 {
-	va_list ap;
+	va_list ap, copy;
 	int i, flag;
-	char *string = NULL;
 
+	i = 0;
 	va_start(ap, format);
-	while (format[i] != '\0')
+	va_start(copy, format);
+	while (format[i])
 	{
 		flag = 0;
 		switch (format[i])
@@ -33,22 +34,21 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				flag = 1;
-				string = va_arg(ap, char *);
-				if (string == NULL)
-					string = "(nil)";
-				i = 0;
-				while (string[i] != '\0')
+				va_copy(copy, ap);
+				if (va_arg(copy, char *) == NULL)
 				{
-					printf("%c", string[i]);
-					i++;
+					printf("(nil)");
+					break;
 				}
+				printf("%s", va_arg(ap, char *));
 				break;
 		}
-		if ((format[i + 1] != '\0') && (flag == 1))
+		if (flag == 1 && format[i + 1] != '\0')
 			printf(", ");
 		i++;
 	}
 	printf("\n");
 
+	va_end(copy);
 	va_end(ap);
 }
