@@ -20,7 +20,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	for (i = 0; i < n; i++)
 	{
 		len = strlen(va_arg(ap, char *));
-		string = malloc(sizeof(char) * len);
+		string = malloc(sizeof(char) * (len + 1));
 		if (string == NULL)
 			exit(EXIT_FAILURE);
 
