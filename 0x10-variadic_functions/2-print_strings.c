@@ -10,20 +10,21 @@
 
 void print_strings(const char *separator, const unsigned int n, ...)
 {
-	char *string = NULL, *arg = NULL;
+	char *string = NULL;
 	unsigned int i, len;
 	va_list ap;
+	va_list copy;
 
 	va_start(ap, n);
+	va_copy(copy, ap);
 	for (i = 0; i < n; i++)
 	{
-		arg = strlen(va_arg(ap, char *));
-		len = strlen(string);
+		len = strlen(va_arg(ap, char *));
 		string = malloc(sizeof(char) * (len + 1));
 		if (string == NULL)
 			exit(EXIT_FAILURE);
 
-		strcpy(string, arg);
+		strcpy(string, va_arg(copy, char *));
 		if (string == NULL)
 			strcpy(string, "(nil)");
 		printf("%s", string);
@@ -34,5 +35,6 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	}
 	printf("\n");
 
+	va_end(copy);
 	va_end(ap);
 }
