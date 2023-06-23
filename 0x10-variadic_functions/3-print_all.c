@@ -15,7 +15,7 @@ void print_all(const char * const format, ...)
 	double decimal;
 
 	va_start(ap, format);
-	while (format[i] && (format != NULL))
+	while ((format != NULL) && format[i])
 	{
 		flag = 0;
 		switch (format[i])
@@ -48,4 +48,5 @@ void print_all(const char * const format, ...)
 	}
 	printf("\n");
 	va_end(ap);
+	exit(EXIT_SUCCESS);
 }
