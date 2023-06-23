@@ -10,7 +10,7 @@
 void print_all(const char * const format, ...)
 {
 	va_list ap;
-	int i = 0, num = 0, flag = 0;
+	int i = 0, num = 0, flag;
 	char *string, character;
 	double decimal;
 
@@ -18,7 +18,7 @@ void print_all(const char * const format, ...)
 	while (format[i])
 	{
 		flag = 0;
-		switch (format[i++])
+		switch (format[i])
 		{
 			case 'c':
 				character = va_arg(ap, int);
@@ -44,6 +44,7 @@ void print_all(const char * const format, ...)
 		}
 		if ((format[i + 1] != '\0') && flag)
 			printf(", ");
+		i++;
 	}
 	printf("\n");
 	va_end(ap);
