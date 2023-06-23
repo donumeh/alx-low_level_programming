@@ -15,7 +15,7 @@ void print_all(const char * const format, ...)
 	double decimal;
 
 	va_start(ap, format);
-	while (format[i] && format)
+	while (format[i] && (format != NULL))
 	{
 		flag = 0;
 		switch (format[i])
