@@ -10,7 +10,7 @@
 void print_all(const char * const format, ...)
 {
 	va_list ap;
-	int i = 0, num = 0, flag;
+	int i = 0, num = 0, flag = 0;
 	char *string, character;
 	double decimal;
 
