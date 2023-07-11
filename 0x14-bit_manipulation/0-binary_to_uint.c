@@ -1,58 +1,34 @@
 #include "main.h"
 
 /**
- * binary_to_uint - converts a binary number
- * @b: the binary in char
+ * binary_to_uint - converts binary to number
+ * @b: binary
  *
- * Return: unsigned int
+ * Return: int value
  */
 
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num = 0;
-	int i = 0, count = 0, mul = 0;
+	unsigned int num = 0, pos = 1, binary;
+	int len;
 
-	if (!b)
+	if (b == NULL)
 		return (0);
-	while (b[i])
-		i++;
-	i--;
 
-	while (i >= 0)
+	len = strlen(b) - 1;
+	binary = 0;
+	while (len >= 0)
 	{
-		mul = _pow(2, count);
-		if (b[i] == '1')
-		{
-			num += (1 * mul);
-		}
-		else if (b[i] == '0')
-		{
-			num += (mul * 0);
-		}
+		binary = b[len] - '0';
+		if (binary != 1 && binary != 0)
+			return (0);
+		if (binary == TRUE)
+			num += pos;
 		else
-		{
-			num = 0;
-			break;
-		}
-		count++;
-		i--;
+			num += 0;
+		pos *= 2;
+		len--;
 	}
 
 	return (num);
-}
-
-
-/**
- * _pow - calculates the exponent value
- * @a: the first int
- * @b: the second int
- *
- * Return: the power
- */
-
-int _pow(int a, int b)
-{
-	if (b == 0)
-		return (1);
-	return (a * _pow(a, b - 1));
 }
