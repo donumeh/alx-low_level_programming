@@ -10,7 +10,7 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd, i;
+	int fd;
 	char *str;
 	ssize_t n;
 
@@ -34,8 +34,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	/* print the letters */
-	for (i = 0; i < n; i++)
-		dprintf(2, "%c", str[i]);
+	write(2, str, n);
 
 	close(fd);
 	free(str);
