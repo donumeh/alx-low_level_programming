@@ -10,5 +10,6 @@ unsigned int char_to_int(char, int *);
 unsigned int _pow(int, int);
 void print_binary(unsigned long int n);
 int _putchar(char);
+int get_bit(unsigned long int, unsigned int);
 
 #endif /* MAIN_H */
