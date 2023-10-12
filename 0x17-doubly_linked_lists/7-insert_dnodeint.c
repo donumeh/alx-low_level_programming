@@ -42,13 +42,13 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h,
 		tmp = tmp->next;
 		i++;
 	}
-/*	if ((i + 1) == idx)
+	if ((i + 1) == idx)
 	{
 		new_node->next = NULL;
 		tmp->next = new_node;
 		new_node->prev = tmp;
 		return (*h);
-	} */
+	}
 
 	free(new_node);
 	return (*h);
