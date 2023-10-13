@@ -50,7 +50,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h,
 		new_node->prev = tmp;
 		return (new_node);
 	}
-
 	free(new_node);
 	return (NULL);
 }
