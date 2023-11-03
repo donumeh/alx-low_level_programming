@@ -9,23 +9,34 @@
  * Return: void
  */
 
-int insert_hash_node(hash_table_t *ht, unsigned long int hash_key,
-		hash_node_t *node)
+hash_node_t *insert_hash_node(hash_node_t **head, const char *key, const char *value)
 {
-	if (ht->array[hash_key] == NULL)
+	hash_node_t *tmp;
+
+	tmp = *head;
+
+	while (tmp != NULL)
 	{
-		printf("%s\n", "Here");
-		ht->array[hash_key] = node;
-		return (1);
+		if (strcmp(key, tmp->key) == 0)
+		{
+			free(tmp->value);
+			tmp->value = strdup(value);
+			return (*head);
+		}
+		tmp = tmp->next;
 	}
-	else
-	{
-		printf("%s\n", "here2");
-		node->next = ht->array[hash_key];
-		ht->array[hash_key] = node;
-		return (1);
-	}
-	return (0);
+
+	tmp = malloc(sizeof(hash_node_t));
+
+	if (tmp == NULL)
+		return (NULL);
+
+	tmp->key = strdup(key);
+	tmp->value = strdup(value);
+	tmp->next = *head;
+	*head = tmp;
+
+	return (*head);
 }
 
 /**
@@ -39,26 +50,17 @@ int insert_hash_node(hash_table_t *ht, unsigned long int hash_key,
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *node;
-	unsigned long int hash_key;
-	int flag;
+	unsigned long int k_index;
 
-	if (key == NULL)
-		return (0);
 	if (ht == NULL)
 		return (0);
 
-	node = malloc(sizeof(hash_node_t));
-	if (node == NULL)
+	if (key == NULL || *key == '\0')
 		return (0);
-	node->key = strdup(key);
-	node->value = strdup(value);
-	node->next = NULL;
 
-	hash_key = key_index((unsigned char *)key, sizeof(ht->array));
+	k_index = key_index((unsigned char *)key, ht->size);
 
-	flag = insert_hash_node(ht, hash_key, node);
-	if (flag == 0)
+	if (insert_hash_node(&(ht->array[k_index]), key, value) == NULL)
 		return (0);
 
 	return (1);
