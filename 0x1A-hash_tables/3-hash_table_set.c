@@ -2,14 +2,15 @@
 
 /**
  * insert_hash_node - inserts a node at pos
- * @ht: hash table
- * @hash_key: the key/index to insert at
- * @node: the node to insert
+ * @head: the head of the bucket
+ * @key: the key to add
+ * @value: value of the corresponding key
  *
  * Return: void
  */
 
-hash_node_t *insert_hash_node(hash_node_t **head, const char *key, const char *value)
+hash_node_t *insert_hash_node(hash_node_t **head, const char *key,
+		const char *value)
 {
 	hash_node_t *tmp;
 
