@@ -1,51 +1,34 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_print - prints the keys and values
- * @ht: the hash table
+ * hash_table_print - Print whole the hash table.
+ * @ht: Hash table.
  *
- * Return: void
+ * Return: Void.
  */
-
 void hash_table_print(const hash_table_t *ht)
 {
-	unsigned long int i;
-	int j = 0, h = 0;
-	hash_node_t *h_nd;
-
+	unsigned long int i, flag = 0;
+	hash_node_t *current;
+	
 	if (ht == NULL)
 		return;
-
-	printf("{");
+	putchar('{');
 	for (i = 0; i < ht->size; i++)
 	{
-		if (ht->array[i] != NULL)
+		current = ht->array[i];
+		if (current != NULL)
 		{
-			h_nd = ht->array[i], j++;
-			if (h_nd->next != NULL)
+			while (current != NULL)
 			{
-				if (j > 1)
+				if (flag == 1)
 					printf(", ");
-				printf("{"), h = 0;
-				while (h_nd != NULL)
-				{
-					h++;
-					if (h == 1)
-						printf("'%s': '%s'", h_nd->key, h_nd->value);
-					else
-						printf(", '%s': '%s'", h_nd->key, h_nd->value);
-					h_nd = h_nd->next;
-				}
-				printf("}");
-			}
-			else
-			{
-				if (j == 1)
-					printf("'%s': '%s'", h_nd->key, h_nd->value);
-				else
-					printf(", '%s': '%s'", h_nd->key, h_nd->value);
+				printf("'%s': '%s'", current->key, current->value);
+				flag = 1;
+				current = current->next;
 			}
 		}
 	}
-	printf("}\n");
+	putchar('}');
+	putchar('\n');
 }
