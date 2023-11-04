@@ -21,14 +21,12 @@ void hash_table_print(const hash_table_t *ht)
 	{
 		if (ht->array[i] != NULL)
 		{
-			h_nd = ht->array[i];
-			j++;
+			h_nd = ht->array[i], j++;
 			if (h_nd->next != NULL)
 			{
 				if (j > 1)
 					printf(", ");
-				printf("{");
-				h = 0;
+				printf("{"), h = 0;
 				while (h_nd != NULL)
 				{
 					h++;
@@ -43,11 +41,9 @@ void hash_table_print(const hash_table_t *ht)
 			else
 			{
 				if (j == 1)
-					printf("'%s': '%s'",
-							h_nd->key, h_nd->value);
+					printf("'%s': '%s'", h_nd->key, h_nd->value);
 				else
-					printf(", '%s': '%s'",
-							h_nd->key, h_nd->value);
+					printf(", '%s': '%s'", h_nd->key, h_nd->value);
 			}
 		}
 	}
